@@ -3,10 +3,11 @@
 This is a template / boilerplate code for using React and Redux with Typescript.
 
 It includes:
- - intro code from `create-react-app --typescript`
- - tslint settings that work with Prettier
  - starter code for using actions, reducers, and react/redux.
-   - this code just pulls a list of todos from `https://jsonplaceholder.typicode.com/todos`, displays them on the screen, and allows you to delete them by clicking on them.  No changes are saved to DB - only state.
+ - introductory **tests** for redux logic.
+ - an example of how to implement "protected" routes with `react-router`.
+ - a very simple "todo" example, which fetches todos from an opensource fake json api and allows you to delete them by clicking on them.
+ - tslint settings that work with Prettier.
 
 ### To Run...
  - `yarn` or `npm install`
