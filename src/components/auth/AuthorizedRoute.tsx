@@ -10,7 +10,7 @@ export interface IAuthorizedRouteProps extends RouteProps {
 }
 
 
-export class CProtectedRoute extends Component<IAuthorizedRouteProps> {
+export class CAuthorizedRoute extends Component<IAuthorizedRouteProps> {
 
 	render() {
 		const {
@@ -38,6 +38,6 @@ const mapStateToProps = (state: IStoreState) => {
   };
 };
 
-export const ProtectedRoute = connect(
+export const AuthorizedRoute = connect(
 	mapStateToProps
-)(CProtectedRoute);
+)(CAuthorizedRoute);

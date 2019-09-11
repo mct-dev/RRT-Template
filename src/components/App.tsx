@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./Home";
 import { Todos } from "./Todos";
 import { Login } from "./Login";
-import { ProtectedRoute } from "./auth/AuthorizedRoute";
+import { AuthorizedRoute } from "./auth/AuthorizedRoute";
 import {
   IAuthStatus,
   AuthClearAction,
@@ -39,7 +39,7 @@ export class CApp extends Component<IAppProps> {
           </ul>
           <Route path="/public" component={Home} />
           <Route path="/login" component={Login} />
-          <ProtectedRoute path="/protected" protectedComponent={Todos} />
+          <AuthorizedRoute path="/protected" protectedComponent={Todos} />
         </div>
       </Router>
     );

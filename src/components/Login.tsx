@@ -18,7 +18,7 @@ class _Login extends Component<ILoginProps> {
 		if (authenticated) {
 
 			return (
-				<Redirect to="/" />
+				<Redirect to="/protected" />
 			);
 
 		} else {

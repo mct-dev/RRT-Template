@@ -8,7 +8,6 @@ import {
 } from "../actions";
 import { IStoreState } from "../reducers";
 import { Dispatch } from "redux";
-// import Login from "./Login";
 
 interface ITodoProps {
   todos: ITodo[];
