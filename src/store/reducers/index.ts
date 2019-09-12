@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import { IHttpRequest, ITodo } from "../actions";
+import { IAuthStatus } from "../actions/auth";
+import { authReducer } from "./auth";
 import { httpReducer } from "./http";
 import { todosReducer } from "./todos";
-import { authReducer } from "./auth";
-import { IAuthStatus } from "../actions/auth";
 
 export interface IStoreState {
   http: IHttpRequest;
@@ -12,7 +12,7 @@ export interface IStoreState {
 }
 
 export const reducers = combineReducers<IStoreState>({
+  auth: authReducer,
   http: httpReducer,
   todos: todosReducer,
-  auth: authReducer,
 });

@@ -1,10 +1,10 @@
+import { IAuthClearAction, IAuthErrorAction, IAuthSuccessAction } from "./auth";
 import { IHttpErrorAction, IHttpSendAction, IHttpSuccessAction } from "./http";
 import {
   IDeleteTodoAction,
   IFetchTodosAction,
-  IFetchTodosErrorAction
+  IFetchTodosErrorAction,
 } from "./todos";
-import { IAuthSuccessAction, IAuthErrorAction, IAuthClearAction } from "./auth";
 
 export enum ActionTypes {
   FETCH_TODOS,
@@ -15,7 +15,7 @@ export enum ActionTypes {
   HTTP_ERROR,
   AUTH_SUCCESS,
   AUTH_ERROR,
-  AUTH_CLEAR
+  AUTH_CLEAR,
 }
 
 export type Action =

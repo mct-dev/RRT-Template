@@ -6,8 +6,11 @@ interface IButtonProps {
 }
 
 const Button: React.FC<IButtonProps> = ({ children, onClick }): JSX.Element => {
+
+  const handleClick = (e: React.MouseEvent) => onClick && onClick(e);
+
   return (
-    <button onClick={(e: React.MouseEvent) => onClick && onClick(e)}>{children}</button>
+    <button onClick={handleClick}>{children}</button>
   );
 };
 

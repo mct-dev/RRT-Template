@@ -20,18 +20,18 @@ export type AuthAction = IAuthSuccessAction | IAuthErrorAction;
 
 export const AuthSuccessAction = (): IAuthSuccessAction => {
   return {
-    type: AT.AUTH_SUCCESS
+    type: AT.AUTH_SUCCESS,
   };
 };
 
 export const AuthErrorAction = (): IAuthErrorAction => {
   return {
-    type: AT.AUTH_ERROR
+    type: AT.AUTH_ERROR,
   };
 };
 
 export const AuthClearAction = (): IAuthClearAction => {
   return {
-    type: AT.AUTH_CLEAR
+    type: AT.AUTH_CLEAR,
   };
 };

@@ -1,68 +1,68 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import {
   deleteTodo,
   fetchTodos,
+  IHttpRequest,
   ITodo,
-  IHttpRequest
-} from "../actions";
-import { IStoreState } from "../reducers";
-import { Dispatch } from "redux";
+} from "store/actions";
+import { IStoreState } from "store/reducers";
+import { Todo } from "./Todo";
 
-interface ITodoProps {
-  todos: ITodo[];
-  http: IHttpRequest;
-  fetchTodos: () => void;
+interface ITodosProps {
   deleteTodo: typeof deleteTodo;
+  fetchTodos: () => void;
+  http: IHttpRequest;
+  todos: ITodo[];
 }
 
-export class TodosComponent extends Component<ITodoProps> {
+export class TodosComponent extends Component<ITodosProps> {
 
-  public onButtonClick = (): void => {
+  public fetchTodos = (): void => {
     const { fetchTodos: fetchTs } = this.props;
     fetchTs();
-  };
+  }
 
   public renderList(): JSX.Element[] {
     const { deleteTodo: delTodo } = this.props;
     return this.props.todos.map((todo: ITodo) => {
       return (
-        <div key={todo.id} onClick={() => delTodo(todo.id)}>
-          {todo.title}
-        </div>
+        <Todo key={todo.id} todo={todo} onClick={() => delTodo(todo.id)} />
       );
     });
   }
 
   public render() {
     const {
-      http: { inProgress: requestPending }
+      http: { inProgress: requestPending },
     } = this.props;
     return (
       <div>
-        <button onClick={this.onButtonClick}>Fetch</button>
+        <button onClick={this.fetchTodos}>Fetch</button>
         {requestPending ? <div>Loading...</div> : this.renderList()}
       </div>
     );
   }
+
 }
 
 const mapStateToProps = ({
   todos,
-  http
-}: IStoreState): { todos: ITodo[]; http: IHttpRequest } => {
+  http,
+}: IStoreState): { http: IHttpRequest, todos: ITodo[] } => {
   return {
+    http,
     todos,
-    http
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-	fetchTodos: () => fetchTodos()(dispatch),
-	deleteTodo: (id: number) => dispatch(deleteTodo(id))
-})
+  deleteTodo: (id: number) => dispatch(deleteTodo(id)),
+  fetchTodos: () => fetchTodos()(dispatch),
+});
 
 export const Todos = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(TodosComponent);

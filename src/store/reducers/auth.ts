@@ -2,7 +2,7 @@ import { Action, ActionTypes as AT } from "../actions";
 import { IAuthStatus } from "../actions/auth";
 
 export const initialAuthState: IAuthStatus = {
-	authenticated: false
+  authenticated: false,
 };
 
 export const authReducer = (state = initialAuthState, action: Action) => {
@@ -11,7 +11,7 @@ export const authReducer = (state = initialAuthState, action: Action) => {
       return {
         ...state,
         authenticated: true,
-			};
+      };
     case AT.AUTH_ERROR:
       return {
         ...state,

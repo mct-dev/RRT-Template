@@ -19,8 +19,8 @@ export const httpReducer = (state = initialHttpState, action: Action) => {
     case AT.HTTP_ERROR:
       return {
         ...state,
-        inProgress: false,
         error: action.payload,
+        inProgress: false,
       };
      default:
        return state;
