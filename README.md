@@ -1,6 +1,6 @@
 # React / Redux / Typescript / Storybook - TEMPLATE
 
-This is a template / boilerplate code for using React and Redux with Typescript. It also includes [storybook](https://storybook.js.org/), a tool for building components in isolation and maintaining a component library.  Testing and linting (tslint) are also included.
+This is a template / boilerplate code for using React and Redux with Typescript. It also includes [Storybook](https://storybook.js.org/), a tool for building components in isolation and maintaining a component library.  Testing and linting (tslint) are also included.
 
 ### To Run...
  - `npm install`
