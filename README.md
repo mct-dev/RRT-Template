@@ -1,14 +1,10 @@
-# React / Redux / Typescript - TEMPLATE
+# React / Redux / Typescript / Storybook - TEMPLATE
 
-This is a template / boilerplate code for using React and Redux with Typescript.
-
-It includes:
- - starter code for using actions, reducers, and react/redux.
- - introductory **tests** for redux logic.
- - an example of how to implement "protected" routes with `react-router`.
- - a very simple "todo" example, which fetches todos from an opensource fake json api and allows you to delete them by clicking on them.
- - tslint settings that work with Prettier.
+This is a template / boilerplate code for using React and Redux with Typescript. It also includes [storybook](https://storybook.js.org/), a tool for building components in isolation and maintaining a component library.  Testing and linting (tslint) is included.
 
 ### To Run...
- - `yarn` or `npm install`
- - `yarn start` or `npm start`
+ - `npm install`
+ - `npm start`
+
+### Notes
+ - `tslint` is the best linting solution I could find at the moment for Typescript. **However,** Palantir (the maintainer) has publicly announced that they will be depricating `tslint` in favor of a typescript integration with `eslint`.  This effort is supported by Microsoft as well. As of 09/12/2019, I can say that the `eslint`-typescript integration is not yet finished.  I was unable to get it working easily in this project and ended up going back to `tslint`.
