@@ -1,18 +1,18 @@
+import { AuthorizedRoute } from "components/auth/AuthorizedRoute";
+import Button from "components/Button";
+import Home from "components/Home";
+import { Login } from "components/Login";
+import { Todos } from "components/Todos/Todos";
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Home from "./Home";
-import { Todos } from "./Todos";
-import { Login } from "./Login";
-import { AuthorizedRoute } from "./auth/AuthorizedRoute";
-import {
-  IAuthStatus,
-  AuthClearAction,
-  IAuthClearAction
-} from "../actions/auth";
 import { connect } from "react-redux";
-import { IStoreState } from "../reducers";
-import Button from "./Button";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import { Dispatch } from "redux";
+import {
+  AuthClearAction,
+  IAuthClearAction,
+  IAuthStatus,
+} from "store/actions/auth";
+import { IStoreState } from "store/reducers";
 
 interface IAppProps {
   auth: IAuthStatus;
@@ -20,10 +20,10 @@ interface IAppProps {
 }
 
 export class CApp extends Component<IAppProps> {
-  render() {
+  public render() {
     const {
       auth: { authenticated },
-      clearAuth
+      clearAuth,
     } = this.props;
     return (
       <Router>
@@ -48,15 +48,15 @@ export class CApp extends Component<IAppProps> {
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  clearAuth: () => dispatch(AuthClearAction())
+  clearAuth: () => dispatch(AuthClearAction()),
 });
 
 export const App = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CApp);

@@ -1,49 +1,49 @@
+import Button from "components/Button";
 import React, { Component } from "react";
-import Button from "./Button";
 import { connect } from "react-redux";
-import { IStoreState } from "../reducers";
-import { IAuthStatus, AuthSuccessAction, AuthErrorAction, IAuthSuccessAction } from "../actions/auth";
-import { Dispatch } from "redux";
 import { Redirect } from "react-router-dom";
+import { Dispatch } from "redux";
+import { AuthErrorAction, AuthSuccessAction, IAuthStatus, IAuthSuccessAction } from "store/actions/auth";
+import { IStoreState } from "store/reducers";
 
 interface ILoginProps {
-	auth: IAuthStatus,
-	authSuccess: () => IAuthSuccessAction,
+  auth: IAuthStatus;
+  authSuccess: () => IAuthSuccessAction;
 }
 
-class _Login extends Component<ILoginProps> {
+class CLogin extends Component<ILoginProps> {
 
-  render() {
-		const { auth: { authenticated }, authSuccess } = this.props;
-		if (authenticated) {
+  public render() {
+    const { auth: { authenticated }, authSuccess } = this.props;
+    if (authenticated) {
 
-			return (
-				<Redirect to="/protected" />
-			);
+      return (
+        <Redirect to="/protected" />
+      );
 
-		} else {
+    } else {
 
-			return (
-				<Button onClick={authSuccess}>
-					Login
-				</Button>
-			);
-		}
+      return (
+        <Button onClick={authSuccess}>
+          Login
+        </Button>
+      );
+    }
   }
 }
 
 const mapStateToProps = (state: IStoreState) => {
   return {
-    auth: state.auth
+    auth: state.auth,
   };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-	authSuccess: () => dispatch(AuthSuccessAction()),
-	authError: () => dispatch(AuthErrorAction())
-})
+  authError: () => dispatch(AuthErrorAction()),
+  authSuccess: () => dispatch(AuthSuccessAction()),
+});
 
 export const Login = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(_Login);
+  mapStateToProps,
+  mapDispatchToProps,
+)(CLogin);

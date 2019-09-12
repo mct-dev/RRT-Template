@@ -1,29 +1,23 @@
+import { App } from "components/App";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore, compose } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
-import { App } from "./components/App";
-import { reducers } from "./reducers";
+import { reducers } from "store/reducers";
 
 declare global {
+
+    /* tslint:disable-next-line:interface-name */
     interface Window {
       __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;
     }
 }
 
-
-if (process.env.NODE_ENV === 'development') {
-
-  console.log('Environment:');
-  console.log(process.env);
-
-}
-
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   reducers,
-  composeEnhancers(applyMiddleware(thunk))
+  composeEnhancers(applyMiddleware(thunk)),
 );
 
 ReactDOM.render(

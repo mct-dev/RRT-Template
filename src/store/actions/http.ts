@@ -1,6 +1,6 @@
-import { ActionTypes as AT, Action } from "./types";
-import { Dispatch } from "redux";
 import { AxiosResponse } from "axios";
+import { Dispatch } from "redux";
+import { Action, ActionTypes as AT } from "./types";
 
 export interface IHttpRequest {
   inProgress: boolean;
@@ -23,31 +23,31 @@ export interface IHttpErrorAction {
 export type HttpAction = IHttpSendAction | IHttpSuccessAction | IHttpErrorAction;
 
 const sleep = async (time: number) => {
-  return new Promise(resolve => setTimeout(resolve, time));
+  return new Promise((resolve) => setTimeout(resolve, time));
 };
 
 export const httpSend = (): IHttpSendAction => {
   return {
-    type: AT.HTTP_SEND
+    type: AT.HTTP_SEND,
   };
 };
 
 export const httpSuccess = (): IHttpSuccessAction => {
   return {
-    type: AT.HTTP_SUCCESS
+    type: AT.HTTP_SUCCESS,
   };
 };
 
 export const httpError = (error: Error): IHttpErrorAction => {
   return {
+    payload: error,
     type: AT.HTTP_ERROR,
-    payload: error
   };
 };
 
 export const makeHttpRequest = async (
   dispatch: Dispatch<Action>,
-  callback: () => Promise<AxiosResponse<any>>
+  callback: () => Promise<AxiosResponse<any>>,
 ): Promise<AxiosResponse<any>> => {
   try {
     dispatch(httpSend());
